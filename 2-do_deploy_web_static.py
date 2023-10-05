@@ -16,8 +16,8 @@ def do_deploy(archive_path):
     if not os.path.exists(archive_path):
         return False
 
-    uncompressed = "/data/web_static/releases/"
     archive_filename = os.path.basename(archive_path)
+    uncompressed = "/data/web_static/releases/archive_filename"
 
     put(archive_path, "/tmp/")
     with cd("/tmp"):
@@ -28,6 +28,6 @@ def do_deploy(archive_path):
     results = run("ls {}" .format(uncompressed)).succeeded #check if deployment was succesful
 
     if results:
-        return True
+        return results
     else:
         return False
