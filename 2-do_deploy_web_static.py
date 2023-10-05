@@ -16,7 +16,7 @@ def do_deploy(archive_path):
         return False
 
     uncompressed = "/data/web_static/releases/archive_path"
-    put("archive_path, /tmp/")
+    put("archive_path", "/tmp/")
     with cd("/tmp"):
         run("tar -xzf {} -C {}" .format(archive_path, uncompressed))
         run("rm {}".format(archive_path))
