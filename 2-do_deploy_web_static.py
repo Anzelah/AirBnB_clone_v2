@@ -18,12 +18,12 @@ def do_deploy(archive_path):
     uncompressed = "/data/web_static/releases/archive_path"
     put("archive_path, /tmp/")
     with cd("/tmp"):
-        run("gunzip -c {} > {}" .format(archive_path, uncompressed))
-        sudo("rm {}".format(archive_path))
-    sudo("rm -rf /data/web_static/current")
+        run("tar -xzf {} -C {}" .format(archive_path, uncompressed))
+        run("rm {}".format(archive_path))
+    run("rm -rf /data/web_static/current")
     run("ln -s /data/web_static/releases/archive_path /data/web_static/current")
 
-    if (do.deploy().succeeded):
+    if (do_deploy().succeeded):
         return True
     else:
         return 
