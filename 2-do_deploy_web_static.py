@@ -16,13 +16,15 @@ def do_deploy(archive_path):
     if not os.path.exists(archive_path):
         return False
 
-    uncompressed = "/data/web_static/releases/archive_path"
+    uncompressed = "/data/web_static/releases/"
+    archive_filename = os.path.basename(archive_path)
+
     put(archive_path, "/tmp/")
     with cd("/tmp"):
         run("tar -xzf {} -C {}" .format(archive_path, uncompressed))
-    run("rm {}".format(archive_path))
+        run("rm {}".format(archive_path))
     run("rm -rf /data/web_static/current")
-    run("ln -s /data/web_static/releases/archive_path /data/web_static/current")
+    run("ln -s /data/web_static/releases/{} /data/web_static/current" .format(archive_filename))
     results = run("ls {}" .format(uncompressed)).succeeded #check if deployment was succesful
 
     if results:
