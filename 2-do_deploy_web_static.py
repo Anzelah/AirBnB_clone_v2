@@ -2,7 +2,7 @@
 """Defines the modules"""
 
 import os
-fro fabric.api import *
+from fabric.api import *
 
 def do_deploy(archive_path):
     """Distribute an archive to your web servers"""
