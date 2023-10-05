@@ -5,7 +5,7 @@ import os
 from fabric.api import *
 
 
-    env.hosts = [
+env.hosts = [
             '54.210.88.27 web-01',
             '52.91.117.155 web-02'
             ]
