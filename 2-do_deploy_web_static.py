@@ -26,9 +26,7 @@ def do_deploy(archive_path):
     run("mkdir -p {}" .format(extracted))  # extract files to if not present
     run("tar -xzf /tmp/{} -C {}/" .format(archive, extracted))
     run("rm /tmp/{}" .format(archive))
-#    run("cp -rp {}/web_static/* {}" .format(extracted, extracted))
-#    run("rm -rf {}/web_static" .format(extracted))
     run("rm -rf /data/web_static/current")
-    run("ln -s {} /data/web_static/current" .format(extracted))
+    run("ln -sf {} /data/web_static/current" .format(extracted))
 
     return True
