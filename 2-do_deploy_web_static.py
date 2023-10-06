@@ -27,6 +27,6 @@ def do_deploy(archive_path):
     run("tar -xzf /tmp/{} -C {}/" .format(archive, extracted))
     run("rm /tmp/{}" .format(archive))
     run("rm -rf /data/web_static/current")
-    run("ln -sf {} /data/web_static/current" .format(extracted))
+    run("ln -s {} /data/web_static/current" .format(extracted))
 
     return True
