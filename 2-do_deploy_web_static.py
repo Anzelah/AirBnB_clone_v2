@@ -15,24 +15,23 @@ def do_deploy(archive_path):
 
     if not os.path.exists(archive_path):
         return False
-    
-    filename = archive_path.split('/')[-1]
-    archive_filename = os.path.splitext(archive_path)[0]
-    uncompressed = "/data/web_static/releases/{}/" .format(archive_filename)
-    fname_noext = os.path.splitext(filename)[0]
+
+    archive = archive_path.split('/')[-1]
+    archive_noext = os.path.splitext(archive)[0]
+    extract_folderpath = "/data/web_static/releases/"
+    extracted = extract_folderpath + archive_noext
 
     put(archive_path, "/tmp/")
-    run("mkdir -p /data/web_static/releases/{}/" .format(fname_noext))
-#    with cd("/tmp"):
-    run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/" .format(filename, fname_noext))
-    run("rm /tmp/{}".format(filename))
-    run("mv data/web_static/releases/{}/web_static/* data/web_static/releases/{}/" .format(fname_noext, fname_noext))
-    run("rm -rf {}web_static" .format(filename))
+    run("mkdir -p {}" .format(extracted)) #mkdir to extract files to if not present
+    run("tar -xzf /tmp/{} -C {}/" .format(archive, extracted))
+    run("rm /tmp/{}" .format(archive))
+    run("mv {}/web_static/* {}" .format(extracted, extracted))
+    run("rm -rf {}/web_static" .format(extracted))
     run("rm -rf /data/web_static/current")
-    run("ln -s /data/web_static/releases/{} /data/web_static/current" .format(archive_filename))
-    results = run("ls {}" .format(uncompressed)).succeeded #check if deployment was succesful
+    run("ln -s {} /data/web_static/current" .format(extracted))
 
-    if results:
-        return results
+    results = run("ls {}" .format(extracted))
+    if results.succeeded:
+        return True
     else:
         return False
