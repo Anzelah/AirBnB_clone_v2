@@ -22,13 +22,16 @@ def do_deploy(archive_path):
     extract_folderpath = "/data/web_static/releases/"
     extracted = extract_folderpath + archive_noext
 
-    put(archive_path, "/tmp/")
-    run("mkdir -p {}" .format(extracted))  # extract files to if not present
-    run("tar -xzf /tmp/{} -C {}/" .format(archive, extracted))
-    run("rm /tmp/{}" .format(archive))
-    run("cp -rp {}/web_static/* {}" .format(extracted, extracted))
-    run("rm -rf {}/web_static" .format(extracted))
-    run("rm -rf /data/web_static/current")
-    run("ln -s {} /data/web_static/current" .format(extracted))
-
-    return True
+    try:
+        put(archive_path, "/tmp/")
+        run("mkdir -p {}" .format(extracted))  # extract files to if not present
+        run("tar -xzf /tmp/{} -C {}/" .format(archive, extracted))
+        run("rm /tmp/{}" .format(archive))
+        run("cp -rp {}/web_static/* {}" .format(extracted, extracted))
+        run("rm -rf {}/web_static" .format(extracted))
+        run("rm -rf /data/web_static/current")
+        run("ln -s {} /data/web_static/current" .format(extracted))
+        
+        return True
+    except Exception as e:
+        return False
