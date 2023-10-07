@@ -51,6 +51,8 @@ def do_deploy(archive_path):
     run("mkdir -p {}/" .format(extracted))  # extract files to if not present
     run("tar -xzf /tmp/{} -C {}/" .format(archive, extracted))
     run("rm /tmp/{}" .format(archive))
+    run("cp -rp {}/web_static/* {}" .format(extracted, extracted))
+    run("rm -rf {}/web_static" .format(extracted))
     run("rm -rf /data/web_static/current")
     run("ln -s {}/ /data/web_static/current" .format(extracted))
 
@@ -60,9 +62,9 @@ def do_deploy(archive_path):
 def deploy():
     """creates and distributes an archive to your web servers"""
 
-    archive_path = do_pack()
-    if not os.path.exists(archive_path):
+    new_path = do_pack()
+    if new_path is None:
         return False
-    results = do_deploy(archive_path)
+    results = do_deploy(new_path)
 
     return results
