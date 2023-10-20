@@ -11,6 +11,7 @@ def hello():
     """The / triggers this function"""
     return "Hello HBNB!"
 
+
 @app.route('/hbnb', strict_slashes=False)
 def hello_hbnb():
     """The /hbnb triggers this function"""
