@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ City Module for HBNB project """
 import models
-from models.state import State
+#from models.state import State
 import os
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, ForeignKey, Integer
+from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 
