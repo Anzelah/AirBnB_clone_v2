@@ -8,17 +8,24 @@ from models.base_model import BaseModel, Base
 
 class State(BaseModel, Base):
     """ State class """
-    __tablename__ = 'states'
+    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
+        __tablename__ = 'states'
+        name = Column(String(128), nullable=False)
 
-    name = Column(String(128), nullable=False)
+        # Unconditional relationship definition
+        cities = relationship(
+            'City',
+            cascade='delete', backref='state')
+    else:
+        name = ""
 
-    # Unconditional relationship definition
-    cities = relationship(
-        'City',
-        cascade='all, delete, delete-orphan',
-        backref='state')
+        @property
+        def cities(self):
+            """Return list of City objects from storage"""
+            list_city = []
+            the_cities = models.storage.all(City)
+            for c in the_cities.values():
+                if c.state_id == self.id:
+                    list_city.append(c)
 
-    def __init__(self, *args, **kwargs):
-        if os.getenv('HBNB_TYPE_STORAGE') != 'db':
-            self.name = ''
-        super().__init__(*args, **kwargs)
+            return (list_city)

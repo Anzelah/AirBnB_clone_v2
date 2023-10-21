@@ -68,6 +68,6 @@ class FileStorage:
                     del FileStorage.__objects[key]
                     self.save()
 
-#    def close(self):
-#        """deserealize the json file to objects"""
-#        self.reload()
+    def close(self):
+        """deserealize the json file to objects"""
+        self.reload()
