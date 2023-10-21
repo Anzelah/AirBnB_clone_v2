@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This module defines a class to manage database storage for hbnb clone"""
 import os
-#import models
+import models
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
@@ -12,6 +12,7 @@ from models.user import User
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+
 
 class DBStorage:
     """This class manages storage of hbnb models in a SQL database"""

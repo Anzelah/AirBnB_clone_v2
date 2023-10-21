@@ -5,6 +5,8 @@ from sqlalchemy import Column, String, Integer  # Import Integer for primary key
 from sqlalchemy.orm import relationship
 import os
 from models.base_model import BaseModel, Base
+from models.ciy import City
+import models
 
 class State(BaseModel, Base):
     """ State class """
