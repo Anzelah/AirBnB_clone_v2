@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Defines a module"""
 from flask import Flask, render_template
-from models import storage
-from models.state import State
+from models import storage, State
+
 
 
 app = Flask(__name__)
@@ -23,6 +23,7 @@ def view_states():
 def remove_session(exception):
     """Remove current session after each request"""
     storage.close()
+
 
 
 if __name__ == '__main__':
