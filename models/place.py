@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 # from models.amenity import Amenity
 import os  # Import the 'os' module to access environment variables
-# import models
+import models
 # from models.review import Review
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, Float, String, ForeignKey, Table

@@ -6,15 +6,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 from models.base_model import BaseModel, Base
+from models.amenity import Amenity
 from models.state import State
 from models.city import City
 from models.user import User
 from models.place import Place
-from models.amenity import Amenity
 from models.review import Review
 
 
-class DBStorage:
+
+class DBStorage():
     """This class manages storage of hbnb models in a SQL database"""
     __engine = None
     __session = None
@@ -92,4 +93,4 @@ class DBStorage:
 
     def close(self):
         """Closes the storage engine."""
-        self.__session.remove()
+        self.__session.close()
