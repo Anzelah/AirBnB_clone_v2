@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Define the modules"""
+
 from flask import Flask, render_template
 from models import storage
 from models.state import State
