@@ -4,6 +4,7 @@ from models import storage
 from models.state import State
 from models.city import City
 from flask import render_template
+"""Defies the modules"""
 
 
 app = Flask(__name__)
