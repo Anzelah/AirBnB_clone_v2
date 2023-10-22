@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 import os
 from datetime import datetime
 from models.base_model import BaseModel, Base
-import models
+#import models
 #from models.city import City
 
 class State(BaseModel, Base):
@@ -25,7 +25,7 @@ class State(BaseModel, Base):
         def cities(self):
             """Return list of City objects from storage"""
             list_city = []
-#            import models
+            import models
             the_cities = models.storage.all(City)
             for k, v in the_cities.values():
                 if v.state_id == self.id:
