@@ -21,14 +21,14 @@ class State(BaseModel, Base):
     else:
         name = ""
 
-        @property
-        def cities(self):
-            """Return list of City objects from storage"""
-            list_city = []
-            import models
-            the_cities = models.storage.all(City)
-            for k, v in the_cities.values():
-                if v.state_id == self.id:
-                    list_city.append(c)
+    @property
+    def cities(self):
+        """Return list of City objects from storage"""
+        list_city = []
+        import models
+        the_cities = models.storage.all(City)
+        for k, v in the_cities.values():
+            if v.state_id == self.id:
+                list_city.append(c)
 
-            return (list_city)
+        return (list_city)
