@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-from flask import Flask
+"""Define the modules"""
+
+from flask import Flask, render_template
 from models import storage
 from models.state import State
 from models.city import City
-from flask import render_template
-"""Defies the modules"""
-
 
 app = Flask(__name__)
 
