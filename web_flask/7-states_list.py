@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines a module"""
 from flask import Flask, render_template
-from models import storage
+from models import storage, State
 
 
 app = Flask(__name__)
@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route('/states_list', strict_slashes=False)
 def view_states():
     """The route triggers this function"""
-    all_states = storage.all("State")
+    all_states = storage.all(State)
     states = list()
     for state, value in all_states.items():
         states.append(value)
