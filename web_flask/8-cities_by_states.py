@@ -7,7 +7,6 @@ from models.city import City
 
 app = Flask(__name__)
 
-
 @app.route('/cities_by_states', strict_slashes=False)
 def view_states():
     """The route triggers this function"""
