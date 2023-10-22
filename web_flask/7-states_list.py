@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """Defines a module"""
-from models import storage
 from flask import Flask, render_template
-
+from models import storage
 
 
 app = Flask(__name__)
