@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 """Defines a module"""
-from flask import Flask, render_template
+from flask import Flask
 from models import storage
 from models.state import State
 from models.city import City
+from flask import render_template
+
 
 app = Flask(__name__)
+
 
 @app.route('/cities_by_states', strict_slashes=False)
 def view_states():
