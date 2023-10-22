@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Defines a module"""
 from flask import Flask, render_template
-from models import State
 
 
 
