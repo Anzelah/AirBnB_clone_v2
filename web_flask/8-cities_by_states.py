@@ -6,6 +6,7 @@ from flask import Flask, render_template
 from models import storage
 from models.state import State
 from models.city import City
+"""Initializing modules"""
 
 
 app = Flask(__name__)
@@ -34,7 +35,6 @@ def view_states():
 def remove_session(exception):
     """Remove current session after each request"""
     storage.close()
-
 
 
 if __name__ == '__main__':
